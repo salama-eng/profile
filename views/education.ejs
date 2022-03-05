@@ -1,0 +1,202 @@
+<%- include('./includes/header.ejs') %>
+
+    <!-- //about -->
+    <!-- services -->
+    <div style="margin-top: 5rem ">
+     
+        
+
+      <div class="table-responsive divv  m-4 col-lg-8 col-11 position-relative">
+        <table class="table col-12 m-4">
+          <tr >
+            <th style=" color:rgb(255, 225, 161) ;" scope="col">school name</th>
+            <th style=" color:rgb(255, 225, 161) ;" scope="col">degree</th>
+            <th  style=" color:rgb(255, 225, 161) ;" scope="col">date</th>
+            <th style=" color:rgb(255, 225, 161) ;"scope="col">description</th>
+            <th style=" color:rgb(255, 225, 161) ;"scope="col">Edite</th>
+            <th style=" color:rgb(255, 225, 161) ;"scope="col">Delete</th>
+          </tr>
+
+          <% for( let index=0; index < education.length; index++ ) { let n=index %>
+
+          <tr>
+            <th scope="col"><%= education[index].s_name %></th>
+            <th scope="col"><%= education[index].degree %></th>
+            <th scope="col"><%= education[index].date %></th>
+            <th scope="col"><%= education[index].description %></th>
+						<input type="hidden" class="hidden"  value="<%=education[index].s_name%>">
+
+            <th scope="col">
+              <button
+                type="button"
+                class="btn btn-primary"
+                
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop<%= education[index]._id %>"
+							> 
+                Edite
+              </button>
+            </th>
+           <th> <a href="/delete_education/<%= education[index]._id %>" class="btn btn-danger confirm"> <i
+              class="fa fa-close"></i> Delete</a></th>
+
+
+
+          </tr>
+          <!-- Button trigger modal -->
+          <!-- edit Modal -->
+				
+          <div
+            class="modal fade"
+            id="staticBackdrop<%= education[index]._id %>"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">
+                    Modal title
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="divv m-auto mt-4 education">
+                    <form action="/edite_education" method="post" class="w-100">
+                      <input
+                        class="inputt"
+                        type="text"
+                        name="s_name"
+                        placeholder="please enter education place"
+                        value="<%= education[index].s_name  %>"
+                      /><br />
+											<input type="hidden"   value="<%= education[index]._id  %>"  name="id">
+                      
+                      <input
+                        class="inputt"
+                        type="text"
+                        name="degree"
+                        placeholder="please enter major"
+                        value="<%= education[index].degree  %>"
+                      /><br />
+                      <input class="inputt" type="date" name="date" /><br />
+                      <textarea
+                        name="description"
+                        id=""
+                        cols="30"
+                        rows="10"
+                        placeholder="description"
+                        value="<%= education[index].description  %>"
+                      ></textarea
+                      ><br />
+
+                      <div class="modal-footer">
+                        <input type="submit" class="ssubmit" value="Save" />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <% } %>
+        </table>
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Add 
+        </button>
+      </div>
+    </div>
+
+
+
+
+
+
+    <!-- Adding  -->
+    <div
+      class="modal fade w-100"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog w-100">
+        <div class="modal-content w-100">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Adding education</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="divv m-auto mt-4 education">
+
+						 <!-- Adding  form-->
+
+              <form action="/add_education" method="post" class="w-100">
+
+                <input
+                  class="inputt"
+                  type="text"
+                  name="s_name"
+                  placeholder="please enter education place"
+                /><br />
+                <input
+                  class="inputt"
+                  type="text"
+                  name="degree"
+                  placeholder="please enter major"
+                /><br />
+                <input class="inputt" type="date" name="date" /><br />
+                <textarea
+                  name="description"
+                  id=""
+                  cols="30"
+                  rows="10"
+                  placeholder="description"
+                ></textarea
+                ><br />
+
+                <div class="modal-footer">
+                  <input type="submit" class="ssubmit" value="Save" />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+
+    <!-- contact -->
+
+    <!-- JavaScript Bundle with Popper -->
+    <script
+
+
+	
+
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

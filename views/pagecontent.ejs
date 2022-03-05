@@ -1,0 +1,90 @@
+<%- include('./includes/header.ejs') %>
+    <!-- //about -->
+    <!-- services -->
+    <div style="margin-top: 5rem ">
+      <% for( let index=0; index < pagecontent.length; index++ ){ %>
+        <div class="divv  m-4 col-lg-8 col-11 position-relative">
+          <h1> <%= pagecontent[index].name %></h1>
+          <div class=" d-flex flex-wrap">
+            
+          <img src="images/<%=pagecontent[index].img %>" class="col-lg-3 col-11" alt="">
+          <p class="col-lg-8 col-11">
+            <%= pagecontent[index].value %>
+          </p></div>
+
+          <button
+                type="button"
+                class="btn btn-primary" 
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop<%= pagecontent[index]._id %>"
+							> 
+                Edite
+              </button>
+     
+
+              <div
+              class="modal fade"
+              id="staticBackdrop<%= pagecontent[index]._id %>"
+              data-bs-backdrop="static"
+              data-bs-keyboard="false"
+              tabindex="-1"
+              aria-labelledby="staticBackdropLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">
+                      hello paragraph
+                    </h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="divv m-auto mt-4 education">
+                      <form action="/edite_pagecontent" method="post" class="w-100" enctype="multipart/form-data">
+                        <input
+                          class="inputt"
+                          type="text"
+                          name="value"
+                          placeholder="please enter education place"
+                          value="<%= pagecontent[index].value  %>"
+                        /><br/>
+                        <input
+                        class="inputt"
+                        type="file"
+                        name="img"
+                        placeholder="please enter education place"
+                        value="<%= pagecontent[index].img  %>"
+                      /><br/>
+                        <input type="hidden"   value="<%= pagecontent[index]._id  %>"  name="id">
+                        
+                        <div class="modal-footer">
+                          <input type="submit" class="ssubmit" value="Save" />
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+        </div>
+<% } %> 
+    <!-- JavaScript Bundle with Popper -->
+    <script
+
+
+	
+
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

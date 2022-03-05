@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>protofilio</title>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="js/main.js" />
+    <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/js/main.js"></script>
+</head>
+
+<body>
+
+
+    <header style="background-repeat: no-repeat;
+     background-image: url(images/assets/head2.png); background-size:cover">
+
+        <div ></div>
+        <div id="logo">
+            <img id="icon" src="images/assets/sun.png" alt="" width="1px">
+            <script>
+                var icon = document.getElementById("icon");
+                icon.onclick = function () {
+                    document.body.classList.toggle("dark");
+                    if (document.body.classList.contains("dark")) {
+                         icon.src = "images/assets/moon.png";
+                         }
+  
+                    else { icon.src = "images/assets/sun.png"; }
+
+                }
+
+            </script>
+
+
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#skills">SKILLS</a></li>
+                <li><a href="#work">WORK</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+
+
+        </nav>
+
+        <div id="humb_icon" onclick="togglemobile(this)">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <ul class="mobile">
+                <li><a href="#">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#skills">SKILLS</a></li>
+
+                <li><a href="#work">WORK</a></li>
+
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div>
+
+        <!--                     -->
+        <div id="home" class="main">
+            <div class="mainpic">  <img src="images/<%=pagecontent[1].img%>" alt="">
+            </div>
+
+            <div class="mainp">
+
+                <h3>Hello there!</h3>
+                <p><%=pagecontent[0].value%>
+                    
+                </p>
+                <button> <a style="color: rgb(52, 52, 54);" href="/cv" target="_blank" class="btn btn--medium u-fullwidth" data-animate-el>Download CV</a></button>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </header>
+    </div>
+
+    <div id="about" class="about">
+
+
+
+        <div class="aboutp">
+
+            <article>
+                <h1>About me</h1> <%=pagecontent[1].value%>
+
+            </article>
+        </div>
+        <div class="aboutpic"> <img src="images/<%=pagecontent[1].img%>" alt=""></div>
+
+
+    </div>
+
+
+
+    <img class="line" src="images/assets/line-01-01.png" width="100%">
+
+
+    <!--    my work        -->
+    <h1>skills</h1>
+
+    <div class="skills" id="skills">
+
+
+        <div class="skill-item"><img onmouseover="effectedimg(this)" onmouseout="normalimg(this)" src="images/assets/skill.svg"
+                alt="">
+            <p> graphic designer</p>
+        </div>
+
+
+        <div class="skill-item"><img onmouseover="effectedimg(this)" onmouseout="normalimg(this)"
+                src="images/assets/skill4.svg" alt="">
+            <p>front-end developer</p>
+        </div>
+
+
+        <div class="skill-item"><img onmouseover="effectedimg(this)" onmouseout="normalimg(this)"
+                src="images/assets/skiil2.svg" alt="">
+            <p>UX UI designer</p>
+        </div>
+
+
+
+
+    </div>
+
+
+    <!--   End my work        -->
+
+    <img class="line" src="images/assets/line-01-01.png" width="100%">
+    <!--    my work        -->
+    <h1>MY work</h1>
+
+    <div class="work" id="work">
+
+
+        <div class="work1"><img src="images/assets/work1.png" alt="">
+            <p>UX UI design</p>
+        </div>
+
+        <div class="work1"><img src="images/assets/work2.png" alt="">
+            <p>UX UI design</p>
+        </div>
+
+
+        <div class="work1"><img src="images/assets/work3.png" alt="">
+            <p>UX UI design</p>
+        </div>
+    </div>
+
+    <!--   End my work        -->
+
+    <!--     contact       -->
+
+    <div id="contact" class="contact" style="background-image: url(images/assets/back-01.png); background-size: cover;">
+        <div>
+            <img src="images/<%=pagecontent[2].img%>" alt="">
+        </div>
+
+        <form>
+           <input id="name" type="text" placeholder="name">
+            <p id="name_error"></p>
+
+          <input id="email" type="text" placeholder="name" required>
+            <p id="email-error"></p>
+           <input id="comment" type="text" placeholder="your comment">
+            <button type="button" onclick="myFunction()">Submit</button>
+
+        </form>
+
+        <script>
+            function myFunction() {
+                let name = document.getElementById("name").value;
+                let email = document.getElementById("email").value;
+
+                if (name.length > 0 && name.length < 10) {
+                    document.getElementById("name_error").innerHTML = "your name is :" + name;
+                    alert(name.length);
+
+                }
+                else {
+                    document.getElementById("name_error").innerHTML = "Input not valid";
+
+                }
+
+
+                /***************   ****************/
+
+
+
+                if (email.indexOf("@")) {
+
+                    document.getElementById("email-error").innerHTML = "Input ok";
+
+                }
+                else {
+                    document.getElementById("email-error").innerHTML = "Input not valid";
+
+                }
+            }
+/*
+                   function myFunction()
+            {
+            
+              let comment=document.getElementById('comment').value;
+            let uname=document.getElementById('username').value;
+            let email=document.getElementById('email').value;
+            
+            
+            if(uname.length > 0 && uname.length < 10) {
+                    alert(uname.length);
+            
+                }
+            
+            }
+                    */
+        </script>
+
+    </div>
+
+    <!--     contact       -->
+
+    <!--     the qouat        -->
+    <div class="qout" style="background-image:url(images/assets/qout.png) ;">
+
+        <article> <img src="images/assets/left.png" height="50px ">
+            .<%=pagecontent[2].value%> <img src="images/assets/right.png" height="50px">
+        </article>
+
+    </div>
+
+
+
+
+
+    <div style="background-image:url(images/assets/qout.png) ;"></div>
+    <!--------------------->
+    <footer id="footer">
+        <div class="footer-item">
+            <h1>about me</h1>
+            <p>Developer & graphic desiner who feel happy to help others</p>
+
+        </div>
+
+
+        <div class="footer-item">
+            <h1>contact me</h1>
+        
+            <div>
+       <a href=""><img src="images/icons/Twitter.png" alt="" width="30px"></a> 
+        
+       <a href="">  <img src="images/icons/git.png" alt="" width="30px"></a> 
+       
+        <a href="+967734116392"> <img src="images/icons/phone.png" alt="" width="30px"></a> 
+        
+            <a href=""> <img src="images/icons/location.png" alt="" width="30px"> </a> 
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <div class="footer-item" >
+            <h1>explore</h1>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#">skills</a></li>
+
+                <li><a href="#work">work</a></li>
+
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+    </footer>
+
+
+<script>
+
+    function togglemobile(menu)
+     {
+        menu.classList.toggle('open');
+    }
+    
+    </script>
+    <div class="last">
+        <p> &copy; Copyright 2021 -Salama All rights reserved; <i class="fa  fa-dropbox fa-1x"></i>
+            <i class="fa  fa-github fa-1x"></i>
+            <i class="fa  fa-gratipay fa-1x"></i>
+        </p>
+    </div>
+
+</body>
+
+
+
+
+</html>
